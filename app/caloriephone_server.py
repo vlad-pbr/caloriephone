@@ -15,7 +15,7 @@ IMG_SHAPE = (299,299,3)
 PREDICTION_CUTOFF = 0.25
 
 # globals
-app = Flask(__name__)
+app = Flask(__name__, static_folder="build/static")
 model = None
 translation = None
 mlb = None
@@ -36,9 +36,13 @@ def predict(image_path):
     # return predicted labels
     return list(prediction)
 
-@app.route("/<any('',favicon.ico):element>", methods=["GET"])
-def r_main_page(element):
-    return send_from_directory('ui', element or 'index.html')
+@app.route("/", methods=["GET"])
+def r_main_page():
+    return send_from_directory('build', 'index.html')
+
+@app.route("/favicon.ico>", methods=["GET"])
+def r_favicon():
+    return send_from_directory('.', 'favicon.ico')
 
 @app.route("/prediction", methods=["POST"])
 def r_prediction():
@@ -69,7 +73,7 @@ if __name__ == "__main__":
     })
 
     # read translation file
-    with open("../../../Downloads/backend/translation.json", 'r') as translation_file:
+    with open("translation.json", 'r') as translation_file:
         translation = json.loads(translation_file.read())
 
     # init and configure multilabelbinarizer
