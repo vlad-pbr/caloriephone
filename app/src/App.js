@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-import { AppBar, Button, ThemeProvider, Input, Checkbox, FormGroup, FormControlLabel } from "@material-ui/core";
+import { AppBar, Button, ThemeProvider, Input, Checkbox, FormGroup, FormControlLabel, Box } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core";
 import axios from 'axios';
 
@@ -25,7 +25,7 @@ function PredictionList(props) {
                 return (
                   <FormControlLabel
                     control={<Checkbox defaultChecked color="primary" />}
-                    label={prediction_label.charAt(0).toUpperCase() + prediction_label.slice(1).replace("_", " ") + " (" + props.predictions[prediction_label] + " cal)"}
+                    label={prediction_label.charAt(0).toUpperCase() + prediction_label.slice(1).replace(/_/g, " ") + " (" + props.predictions[prediction_label] + " cal)"}
                     onChange={e => {
                       let newtotal = {...total}
                       if (e.target.checked) {
@@ -92,9 +92,15 @@ function App() {
             </Button>
           </label>
         </div>
-        <div className="imageWrap" style={{ marginTop: "5%" }}>
-          <img src={file} className="Image" />
-        </div>
+        <Box 
+          component="img"
+          sx={{
+            maxHeight: "50%",
+            maxWidth: "50%",
+            marginTop: "5%"
+          }}
+          src={file}
+        />
         <div style={{
           display: 'flex',
           alignItems: 'center',
