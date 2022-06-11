@@ -1,3 +1,0 @@
-# CaloriePhone: Model
-
-TODO description 
