@@ -83,7 +83,7 @@ function App() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '10%'
+          marginTop: '7%'
         }}>
           <label htmlFor="contained-button-file">
             <Input accept="image/*" id="contained-button-file" type="file" onChange={handleChange} style={{ display: 'none' }} />
@@ -97,7 +97,7 @@ function App() {
           sx={{
             maxHeight: "50%",
             maxWidth: "50%",
-            marginTop: "5%"
+            marginTop: "2%"
           }}
           src={file}
         />

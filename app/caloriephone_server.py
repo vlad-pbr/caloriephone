@@ -40,7 +40,7 @@ def predict(image_path):
 def r_main_page():
     return send_from_directory('build', 'index.html')
 
-@app.route("/favicon.ico>", methods=["GET"])
+@app.route("/favicon.ico", methods=["GET"])
 def r_favicon():
     return send_from_directory('.', 'favicon.ico')
 
