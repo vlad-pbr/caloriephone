@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 @tf.function
-def f1_score_loss(label_tensor, matrix_tensor):
+def macro_soft_f1(label_tensor, matrix_tensor):
 
     # cast to float32 as we are dealing with float values
     label_tensor = tf.cast(label_tensor, tf.float32)
@@ -27,7 +27,7 @@ def f1_score_loss(label_tensor, matrix_tensor):
     return avg_cost
 
 @tf.function
-def f1_score_metric(label_tensor, matrix_tensor, thresh=0.1):
+def macro_f1(label_tensor, matrix_tensor, thresh=0.1):
 
     # get prediction if greater than threshold
     label_tensor_filtered = tf.greater(matrix_tensor, thresh)

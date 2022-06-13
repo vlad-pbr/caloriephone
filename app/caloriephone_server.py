@@ -68,8 +68,8 @@ if __name__ == "__main__":
 
     # load model
     model = keras.models.load_model("./caloriephone_model",  custom_objects={
-        "macro_f1": f1.f1_score_metric,
-        "macro_soft_f1": f1.f1_score_loss
+        "macro_f1": f1.macro_f1,
+        "macro_soft_f1": f1.macro_soft_f1
     })
 
     # read translation file
